@@ -25,7 +25,7 @@ experiment:
     params:
       lafan1_dataset_conf:
         dataset_name:
-          - walk1_subject5
+          - walk1_subject1
   env_params:
     env_name: MjxUnitreeH1
     headless: True
@@ -51,9 +51,9 @@ experiment:
         - right_foot_mimic
   hidden_layers: [512, 256]
   lr: 1e-4
-  num_envs: 2048
-  num_steps: 200
-  total_timesteps: 300e6
+  num_envs: 300
+  num_steps: 4000
+  total_timesteps: 5e8
   update_epochs: 4
   proportion_env_reward: 0.0
   num_minibatches: 32
@@ -74,8 +74,8 @@ experiment:
   vmap_across_seeds: true
   validation:
     active: true
-    num_steps: 100
-    num_envs: 100
+    num_steps: 4000
+    num_envs: 300
     num: 10 # set to 0 to disable validation
     # if none of the following is set, only the mean reward and episode length is logged
     quantities: # quantities to be used for the distance measures below
