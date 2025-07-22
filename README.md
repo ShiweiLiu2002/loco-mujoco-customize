@@ -1,3 +1,6 @@
+# Notes
+1. Use `pip install --upgrade "jax[cuda12-local]"==0.5.2` to install jax for GPUs.
+
 <p align="center">
   <img width="70%" src="https://github.com/robfiras/loco-mujoco/assets/69359729/bd2a219e-ddfd-4355-8024-d9af921fb92a">
 </p>

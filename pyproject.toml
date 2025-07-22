@@ -9,7 +9,7 @@ dependencies = [
     "mujoco==3.2.7",    # todo: MjSpec API changed in 3.3.0, check why find functions are not supported anymore (no info in Mujoco changelog given)
     "mujoco-mjx==3.2.7",
     "hydra-core",
-    "jax",
+    "jax[cuda12-local]==0.5.2",
     "flax",
     "orbax",
     "distrax",

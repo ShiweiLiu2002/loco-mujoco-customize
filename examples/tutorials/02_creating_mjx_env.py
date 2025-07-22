@@ -3,6 +3,7 @@ import jax
 import time
 
 from loco_mujoco import ImitationFactory
+from loco_mujoco.task_factories import LAFAN1DatasetConf
 
 
 # can increase the speed by ~30% on some GPUs
@@ -10,11 +11,11 @@ os.environ['XLA_FLAGS'] = (
     '--xla_gpu_triton_gemm_any=True ')
 
 # create env
-env = ImitationFactory.make("MjxUnitreeG1", default_dataset_conf=dict(task="stepinplace1"))
+env = ImitationFactory.make("MjxUnitreeH1", lafan1_dataset_conf=LAFAN1DatasetConf(["walk1_subject5"]))
 
 # create keys
 key = jax.random.key(0)
-n_envs = 100
+n_envs = 2048
 keys = jax.random.split(key, n_envs + 1)
 key, env_keys = keys[0], keys[1:]
 

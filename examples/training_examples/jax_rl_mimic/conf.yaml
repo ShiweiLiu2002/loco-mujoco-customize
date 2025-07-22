@@ -25,17 +25,17 @@ experiment:
     params:
       lafan1_dataset_conf:
         dataset_name:
-          - walk1_subject1
+          - walk1_subject5
   env_params:
     env_name: MjxUnitreeH1
-    headless: True
+    headless: true
     disable_arms: false
-    horizon: 1000
+    horizon: 1200
     goal_type: GoalTrajMimic
     goal_params:
       visualize_goal: true
-    control_type: ${control_config.torque_control.control_type}
-    control_params: ${control_config.torque_control.control_params}
+    control_type: ${control_config.position_control.control_type}
+    control_params: ${control_config.position_control.control_params}
     reward_type: MimicReward
     reward_params:
       qpos_w_sum: 0.4
@@ -51,11 +51,11 @@ experiment:
         - right_foot_mimic
   hidden_layers: [512, 256]
   lr: 1e-4
-  num_envs: 300
-  num_steps: 4000
-  total_timesteps: 5e8
+  num_envs: 32
+  num_steps: 20
+  total_timesteps: 3e4
   update_epochs: 4
-  proportion_env_reward: 0.0
+  proportion_env_reward: 0
   num_minibatches: 32
   gamma: 0.99
   gae_lambda: 0.95
@@ -74,8 +74,8 @@ experiment:
   vmap_across_seeds: true
   validation:
     active: true
-    num_steps: 4000
-    num_envs: 300
+    num_steps: 100
+    num_envs: 100
     num: 10 # set to 0 to disable validation
     # if none of the following is set, only the mean reward and episode length is logged
     quantities: # quantities to be used for the distance measures below
@@ -147,7 +147,3 @@ control_config:
         - 5  # hip_rotation_l_actuator -> hip_yaw
         - 6  # knee_angle_l_actuator -> knee
         - 2  # ankle_angle_l_actuator -> ankle
-
-  torque_control:
-    control_type: DefaultControl
-    control_params:
